@@ -4,7 +4,7 @@ import json
 
 pp = pprint.PrettyPrinter(indent=4)
 
-ticker = "AAPL"
+ticker = "AMD"
 NumBullsih = 0
 NumBearish = 0
 
