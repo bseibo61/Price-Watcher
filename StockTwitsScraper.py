@@ -24,15 +24,11 @@ CurrPosts = {"AMD":[], "TLRY":[], "MU":[], "BABA":[], "IQ":[], "JD":[], "TCEHY":
 
 for timesQueried in range(0, 3):
     for key in PrevPosts:
-        print(key)
         NumBullsih = 0
         NumBearish = 0
         
         r = requests.get("https://api.stocktwits.com/api/2/streams/symbol/"+key+".json")
-        print(r.status_code)
         JsonResponse = r.json()
-        # if not PrevPosts[key]:
-                # print("PrevPosts is empty")
         for post in JsonResponse['messages']:
             # Check if post has been previously found
             PrevUsedPost = False
@@ -40,13 +36,10 @@ for timesQueried in range(0, 3):
             newPosts = 0
             for PrevPost in PrevPosts[key]:
                 if PrevPost.id == post["id"]:
-                    # print(PrevPost.id, "is the same as", post["id"])
                     newPosts += 1
                     PrevUsedPost = True
                 else:
                     oldPosts += 1
-            
-            # print("new posts:",newPosts,"old posts:",oldPosts)
             if not PrevUsedPost:
                 PostObj = Post()
                 PostObj.id = post["id"]
@@ -65,9 +58,9 @@ for timesQueried in range(0, 3):
         PrevPosts[key] = CurrPosts[key].copy()
         CurrPosts[key].clear()
 
-    # write to csv with date and time
-    for ticker in PrevPosts:
-        print("\n Numeber of posts in",ticker,"is",len(PrevPosts[ticker]),"\n")
+    # # write to csv with date and time
+    # for ticker in PrevPosts:
+    #     print("\n Numeber of posts in",ticker,"is",len(PrevPosts[ticker]),"\n")
 
     time.sleep(120)
     
@@ -77,7 +70,7 @@ for timesQueried in range(0, 3):
         for ticker in PrevPosts:
             for post in PrevPosts[ticker]:
                 writer.writerow([post.id, post.ticker, post.sentiment, post.PostBody])
-                print(post.id, post.ticker, post.sentiment, post.PostBody)
+                # print(post.id, post.ticker, post.sentiment, post.PostBody)
             # print("\n Numeber of posts in",ticker,"is",len(PrevPosts[ticker]),"\n")
 
 
