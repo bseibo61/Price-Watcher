@@ -1,7 +1,8 @@
 import praw
+import config
 
-reddit = praw.Reddit(client_id='q7Vwxwy_u5H2yQ',
-                     client_secret='FLhk_nNnZtbh6VZay3IOiXKbjjQ',
+reddit = praw.Reddit(client_id=config.RedditClientId,
+                     client_secret=config.RedditClientSecret,
                      user_agent='my user agent')
 
 # Output 10 submitions
