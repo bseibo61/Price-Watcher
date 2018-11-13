@@ -22,7 +22,7 @@ with open(filename, mode='w') as nfile:
 PrevPosts = {"AMD":[], "TLRY":[], "MU":[], "BABA":[], "IQ":[], "JD":[], "TCEHY":[], "APRN":[]}
 CurrPosts = {"AMD":[], "TLRY":[], "MU":[], "BABA":[], "IQ":[], "JD":[], "TCEHY":[], "APRN":[]}
 
-for timesQueried in range(0, 3):
+for timesQueried in range(0, 30):
     for key in PrevPosts:
         NumBullsih = 0
         NumBearish = 0
