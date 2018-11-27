@@ -9,6 +9,7 @@ from pyspark.sql.window import Window
 from os import listdir
 from os.path import isfile, join
 import pyspark.sql.functions as func
+import json
 
 import pandas as pd
 
@@ -50,18 +51,9 @@ if __name__ == "__main__":
 		print("\n date dict:",tickers,"\n")
 		d[f] = tickers
 
-	print(d)	
-	#counts = textFiles.flatMap(lambda line: line.lower().split()).map(lambda word: (word, 1)).reduceByKey(lambda x, y: x + y)
-#	print(counts.top(10, lambda t: t[1]))
+	print(d)
 
-#	outputs = counts.collect()
-#	print(type(outputs))
-#	df = counts.toDF()
-
-#	w = Window.partitionBy(df['_2'])
-
-#	datFrameTF = df.groupBy('_1', '_2').agg(func.count('*').alias('n_w'), func.sum(func.count('*')).over(w).alias('n_d'), (func.count('*')/func.sum(func.count('*')).over(w)).alias('tf')).orderBy('n_w', ascending=False).cache()
-
-#	datFrameTF.show(truncate = 15)
-
+	with open('result.json','w') as fp:
+		json.dump(d,fp)
+	
 	spark.stop()
