@@ -58,10 +58,6 @@ for timesQueried in range(0, 30):
         PrevPosts[key] = CurrPosts[key].copy()
         CurrPosts[key].clear()
 
-    # # write to csv with date and time
-    # for ticker in PrevPosts:
-    #     print("\n Numeber of posts in",ticker,"is",len(PrevPosts[ticker]),"\n")
-
     time.sleep(120)
     
     with open(filename, mode='a') as nfile:
