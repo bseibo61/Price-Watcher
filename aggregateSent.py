@@ -10,7 +10,7 @@ print("data length is",len(data))
 
 for date in data:
     for ticker in data[date]:
-        diff = (data[date][ticker][1] - data[date][ticker][0])/(data[date][ticker][1] + data[date][ticker][0])
+        diff = (data[date][ticker][0] - data[date][ticker][1])/(data[date][ticker][1] + data[date][ticker][0])
         tickers[ticker][date] = diff
         print(ticker)
 
