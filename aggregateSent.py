@@ -10,8 +10,8 @@ print("data length is",len(data))
 
 for date in data:
     for ticker in data[date]:
-        innerDict = {date: data[date][ticker]}
-        tickers[ticker][date] = data[date][ticker]
+        diff = (data[date][ticker][1] - data[date][ticker][0])/(data[date][ticker][1] + data[date][ticker][0])
+        tickers[ticker][date] = diff
         print(ticker)
 
 pprint(tickers)
